@@ -36,5 +36,8 @@
 // @import "bulma/sass/layout/hero.sass";
 // @import "bulma/sass/layout/section.sass";
 
+$footer-padding:1.5rem 1rem 1.5rem;
+
 @import 'bulma/bulma';
-@import 'svg'
+@import 'icons';
+@import 'layout';
