@@ -1,0 +1,29 @@
+<%= form_with url: flights_path, method: :get do |form| %>
+  <div class="field">
+    <%= form.label :from, 'From', class: 'label'%>
+
+    <div class="select">
+      <%= form.select :from, ['Option 1', 'Option 2', 'Option 3' ] %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :to, 'To', class: 'label'%>
+
+    <div class="select">
+      <%= form.select :to, ['Option 1', 'Option 2', 'Option 3'] %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :passengers, 'Passengers', class: 'label' %>
+    <%= form.number_field :passengers, in: 1..4, step: 1, class: 'input' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date, 'Departure Date', class: 'label' %>
+    <%= form.date_field :depature_date, class: 'input' %>
+  </div>
+
+  <%= form.submit 'Search', class: 'button' %>
+<% end %>
