@@ -8,15 +8,25 @@
 
 Airport.create(
   [
+    { code: 'MEM', name: 'Memphis' },
+    { code: 'DEN', name: 'Denver' },
     { code: 'MKE', name: 'Milwaukee' },
     { code: 'DFW', name: 'Dallas/Fort Worth' },
-    { code: 'MEM', name: 'Memphis' },
     { code: 'CLE', name: 'Cleveland' },
     { code: 'MCI', name: 'Kansas City' },
     { code: 'MCO', name: 'Orlando' },
     { code: 'ANC', name: 'Anchorage' },
     { code: 'LAX', name: 'Los Angeles' },
-    { code: 'LIT', name: 'Little Rock' },
-    { code: 'DEN', name: 'Denver' }
+    { code: 'LIT', name: 'Little Rock' }
   ]
 )
+
+denver = Airport.find_by_code('DEN')
+memphis = Airport.find_by_code('MEM')
+
+Flight.create(
+    arrival_airport: denver,
+    departure_airport: memphis,
+    start_datetime: Time.now + 10.days,
+    duration: 45
+  )
