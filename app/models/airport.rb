@@ -2,7 +2,15 @@ class Airport < ApplicationRecord
   has_many :arriving_flights, class_name: 'Flight', foreign_key: 'arrival_airport_id'
   has_many :departing_flights, class_name: 'Flight', foreign_key: 'departure_airport_id'
 
+  belongs_to :time_zone_info
+
   before_save :standardize_case
+
+  def local_time
+    # tz = TimeZone.new(time_zone_info.base_utc_offset_hours)
+    # Time.now.in_time_zone(tz)s
+    Time.now.in_time_zone(time_zone_info.tzinfo_time_zone_name)
+  end
 
   private
 
