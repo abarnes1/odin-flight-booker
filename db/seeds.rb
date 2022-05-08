@@ -6,18 +6,26 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+# TimeZone.us_zones.map { |zone| [zone.name, zone.tzinfo.abbr, zone.tzinfo.utc_offset/3600, zone.tzinfo.base_utc_offset/3600] }
+
+alaska = TimeZoneInfo.create(tzinfo_time_zone_name: 'Alaska', base_utc_offset_hours: -9)
+pacific = TimeZoneInfo.create(tzinfo_time_zone_name: 'Pacific Time (US & Canada)', base_utc_offset_hours: -8)
+mountain = TimeZoneInfo.create(tzinfo_time_zone_name: 'Mountain Time (US & Canada)', base_utc_offset_hours: -7)
+central = TimeZoneInfo.create(tzinfo_time_zone_name: 'Central Time (US & Canada)', base_utc_offset_hours: -6)
+eastern = TimeZoneInfo.create(tzinfo_time_zone_name: 'Eastern Time (US & Canada)', base_utc_offset_hours: -5)
+
 Airport.create(
   [
-    { code: 'MEM', name: 'Memphis' },
-    { code: 'DEN', name: 'Denver' },
-    { code: 'MKE', name: 'Milwaukee' },
-    { code: 'DFW', name: 'Dallas - Fort Worth' },
-    { code: 'CLE', name: 'Cleveland' },
-    { code: 'MCI', name: 'Kansas City' },
-    { code: 'MCO', name: 'Orlando' },
-    { code: 'ANC', name: 'Anchorage' },
-    { code: 'LAX', name: 'Los Angeles' },
-    { code: 'LIT', name: 'Little Rock' }
+    { code: 'MEM', name: 'Memphis', time_zone_info: central },
+    { code: 'DEN', name: 'Denver', time_zone_info: mountain },
+    { code: 'MKE', name: 'Milwaukee', time_zone_info: central },
+    { code: 'DFW', name: 'Dallas - Fort Worth', time_zone_info: central },
+    { code: 'CLE', name: 'Cleveland', time_zone_info: eastern },
+    { code: 'MCI', name: 'Kansas City', time_zone_info: central },
+    { code: 'MCO', name: 'Orlando', time_zone_info: eastern },
+    { code: 'ANC', name: 'Anchorage', time_zone_info: alaska },
+    { code: 'LAX', name: 'Los Angeles', time_zone_info: pacific },
+    { code: 'LIT', name: 'Little Rock', time_zone_info: central }
   ]
 )
 
@@ -35,5 +43,12 @@ Flight.create(
   arrival_airport: denver,
   departure_airport: memphis,
   start_datetime: Time.now + 1.days,
+  duration: 45
+)
+
+Flight.create(
+  arrival_airport: denver,
+  departure_airport: memphis,
+  start_datetime: Time.now + 6.months,
   duration: 45
 )

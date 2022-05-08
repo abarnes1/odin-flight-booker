@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_05_231944) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_08_154042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_231944) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "time_zone_info_id"
     t.index ["code"], name: "index_airports_on_code", unique: true
+    t.index ["time_zone_info_id"], name: "index_airports_on_time_zone_info_id"
   end
 
   create_table "flights", force: :cascade do |t|
@@ -33,6 +35,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_231944) do
     t.index ["departure_airport_id"], name: "index_flights_on_departure_airport_id"
   end
 
+  create_table "time_zone_infos", force: :cascade do |t|
+    t.string "tzinfo_time_zone_name", null: false
+    t.integer "base_utc_offset_hours", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "airports", "time_zone_infos"
   add_foreign_key "flights", "airports", column: "arrival_airport_id"
   add_foreign_key "flights", "airports", column: "departure_airport_id"
 end
