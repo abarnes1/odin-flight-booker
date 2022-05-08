@@ -8,6 +8,6 @@ class Airport < ApplicationRecord
 
   def standardize_case
     code.upcase!
-    name.capitalize!
+    self.name = name.split.each(&:capitalize).join(' ')
   end
 end
