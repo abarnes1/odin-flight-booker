@@ -3,7 +3,7 @@
     <%= form.label :from, 'From', class: 'label'%>
 
     <div class="select">
-      <%= form.select :from, ['Option 1', 'Option 2', 'Option 3' ] %>
+      <%= select_tag :departure_airport_id, options_for_select(airport_options), include_blank: true, required: true %>
     </div>
   </div>
 
@@ -11,13 +11,16 @@
     <%= form.label :to, 'To', class: 'label'%>
 
     <div class="select">
-      <%= form.select :to, ['Option 1', 'Option 2', 'Option 3'] %>
+      <%= select_tag :arrival_airport_id, options_for_select(airport_options), include_blank: true, required: true %>
     </div>
   </div>
 
   <div class="field">
-    <%= form.label :passengers, 'Passengers', class: 'label' %>
-    <%= form.number_field :passengers, in: 1..4, step: 1, class: 'input' %>
+    <%= form.label :passenger_count, 'Passengers', class: 'label' %>
+    
+    <div class="select">
+      <%= select_tag :passenger_count, options_for_select((1..4).map { |i| [i, i]}) %>
+    </div>
   </div>
 
   <div class="field">

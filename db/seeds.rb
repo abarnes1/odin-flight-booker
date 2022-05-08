@@ -11,7 +11,7 @@ Airport.create(
     { code: 'MEM', name: 'Memphis' },
     { code: 'DEN', name: 'Denver' },
     { code: 'MKE', name: 'Milwaukee' },
-    { code: 'DFW', name: 'Dallas/Fort Worth' },
+    { code: 'DFW', name: 'Dallas - Fort Worth' },
     { code: 'CLE', name: 'Cleveland' },
     { code: 'MCI', name: 'Kansas City' },
     { code: 'MCO', name: 'Orlando' },
@@ -25,8 +25,15 @@ denver = Airport.find_by_code('DEN')
 memphis = Airport.find_by_code('MEM')
 
 Flight.create(
-    arrival_airport: denver,
-    departure_airport: memphis,
-    start_datetime: Time.now + 10.days,
-    duration: 45
-  )
+  arrival_airport: denver,
+  departure_airport: memphis,
+  start_datetime: Time.now + 2.days,
+  duration: 60
+)
+
+Flight.create(
+  arrival_airport: denver,
+  departure_airport: memphis,
+  start_datetime: Time.now + 1.days,
+  duration: 45
+)
