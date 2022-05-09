@@ -6,26 +6,53 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# TimeZone.us_zones.map { |zone| [zone.name, zone.tzinfo.abbr, zone.tzinfo.utc_offset/3600, zone.tzinfo.base_utc_offset/3600] }
+alaska_time = TimeZoneInfo.create(
+  rails_time_zone: 'Alaska',
+  iana_time_zone: 'America/Juneau',
+  standard_utc_offset_hours: -9,
+  daylight_savings_utc_offset_hours: -8
+)
 
-alaska = TimeZoneInfo.create(tzinfo_time_zone_name: 'Alaska', base_utc_offset_hours: -9)
-pacific = TimeZoneInfo.create(tzinfo_time_zone_name: 'Pacific Time (US & Canada)', base_utc_offset_hours: -8)
-mountain = TimeZoneInfo.create(tzinfo_time_zone_name: 'Mountain Time (US & Canada)', base_utc_offset_hours: -7)
-central = TimeZoneInfo.create(tzinfo_time_zone_name: 'Central Time (US & Canada)', base_utc_offset_hours: -6)
-eastern = TimeZoneInfo.create(tzinfo_time_zone_name: 'Eastern Time (US & Canada)', base_utc_offset_hours: -5)
+pacific_time = TimeZoneInfo.create(
+  rails_time_zone: 'Pacific Time (US & Canada)',
+  iana_time_zone: 'America/Los_Angeles',
+  standard_utc_offset_hours: -8,
+  daylight_savings_utc_offset_hours: -7
+)
+
+mountain_time = TimeZoneInfo.create(
+  rails_time_zone: 'Mountain Time (US & Canada)',
+  iana_time_zone: 'America/Denver',
+  standard_utc_offset_hours: -7,
+  daylight_savings_utc_offset_hours: -6
+)
+
+central_time = TimeZoneInfo.create(
+  rails_time_zone: 'Central Time (US & Canada)',
+  iana_time_zone: 'America/Chicago',
+  standard_utc_offset_hours: -6,
+  daylight_savings_utc_offset_hours: -5
+)
+
+eastern_time = TimeZoneInfo.create(
+  rails_time_zone: 'Eastern Time (US & Canada)',
+  iana_time_zone: 'America/New_York',
+  standard_utc_offset_hours: -5,
+  daylight_savings_utc_offset_hours: -4
+)
 
 Airport.create(
   [
-    { code: 'MEM', name: 'Memphis', time_zone_info: central },
-    { code: 'DEN', name: 'Denver', time_zone_info: mountain },
-    { code: 'MKE', name: 'Milwaukee', time_zone_info: central },
-    { code: 'DFW', name: 'Dallas - Fort Worth', time_zone_info: central },
-    { code: 'CLE', name: 'Cleveland', time_zone_info: eastern },
-    { code: 'MCI', name: 'Kansas City', time_zone_info: central },
-    { code: 'MCO', name: 'Orlando', time_zone_info: eastern },
-    { code: 'ANC', name: 'Anchorage', time_zone_info: alaska },
-    { code: 'LAX', name: 'Los Angeles', time_zone_info: pacific },
-    { code: 'LIT', name: 'Little Rock', time_zone_info: central }
+    { code: 'MEM', name: 'Memphis', time_zone_info: central_time },
+    { code: 'DEN', name: 'Denver', time_zone_info: mountain_time },
+    { code: 'MKE', name: 'Milwaukee', time_zone_info: central_time },
+    { code: 'DFW', name: 'Dallas - Fort Worth', time_zone_info: central_time },
+    { code: 'CLE', name: 'Cleveland', time_zone_info: eastern_time },
+    { code: 'MCI', name: 'Kansas City', time_zone_info: central_time },
+    { code: 'MCO', name: 'Orlando', time_zone_info: eastern_time },
+    { code: 'ANC', name: 'Anchorage', time_zone_info: alaska_time },
+    { code: 'LAX', name: 'Los Angeles', time_zone_info: pacific_time },
+    { code: 'LIT', name: 'Little Rock', time_zone_info: central_time }
   ]
 )
 
@@ -35,20 +62,20 @@ memphis = Airport.find_by_code('MEM')
 Flight.create(
   arrival_airport: denver,
   departure_airport: memphis,
-  start_datetime: Time.now + 2.days,
+  start_datetime: Time.now.utc + 2.days,
   duration: 60
 )
 
 Flight.create(
   arrival_airport: denver,
   departure_airport: memphis,
-  start_datetime: Time.now + 1.days,
+  start_datetime: Time.now.utc + 1.days,
   duration: 45
 )
 
 Flight.create(
   arrival_airport: denver,
   departure_airport: memphis,
-  start_datetime: Time.now + 6.months,
+  start_datetime: Time.new.utc + 6.months + 1.days,
   duration: 45
 )

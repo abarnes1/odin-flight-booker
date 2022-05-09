@@ -36,8 +36,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_154042) do
   end
 
   create_table "time_zone_infos", force: :cascade do |t|
-    t.string "tzinfo_time_zone_name", null: false
-    t.integer "base_utc_offset_hours", null: false
+    t.string "rails_time_zone", null: false
+    t.string "iana_time_zone", null: false
+    t.integer "standard_utc_offset_hours", null: false
+    t.integer "daylight_savings_utc_offset_hours", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
