@@ -1,3 +1,5 @@
+<%= params %>
+
 <section>
   <h1 class="is-size-2 has-text-centered py-6">Find Flights</h1>
 
@@ -7,8 +9,11 @@
   
 </section>
 
-<section>
-  <div class="container">
-    <%= render partial: 'search_results', locals: { search_results: @flight_search_results } %>
-  </div>
-</section>
+<% if @search_results %>
+  <section>
+    <div class="container">
+      <%= render partial: 'search_results', locals: { flights: @search_results } %>
+    </div>
+  </section>  
+<% end %>
+

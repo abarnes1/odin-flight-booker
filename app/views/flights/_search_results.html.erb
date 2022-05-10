@@ -1,9 +1,9 @@
 <h1 class="is-size-3 has-text-centered py-6">Search Results</h1>
 
-<% if search_results.count > 0 %>
-  <%= search_results.count %> result(s) found!
+<% if flights.count > 0 %>
+  <%= flights.count %> result(s) found!
 
-  <% search_results.each do |flight| %>
+  <% flights.each do |flight| %>
     <br>
     <%= flight.departure_airport.code %> -> <%= flight.arrival_airport.code %> on <%= flight.local_departure_time %> for <%= flight.duration %> minutes.
   <% end %>
