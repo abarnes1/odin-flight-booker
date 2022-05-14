@@ -20,7 +20,7 @@ Sat, 11 Jun 2022 23:59:59.999999999 UTC +00:00
 ```
 
 This date range can be passed into a search:
-`Flight.where(departure_date: selected_date.all_day`
+`Flight.where(departure_date: selected_date.all_day)`
 
 Voila! We have the day's flights. Wait... the user knows there is a daily 10:00 PM flight that isn't showing in the search results.  Why? 
 
