@@ -3,7 +3,7 @@ class Flight < ApplicationRecord
   belongs_to :arrival_airport, -> { readonly }, class_name: 'Airport'
 
   def local_departure_time
-    start_datetime.in_time_zone(departure_airport.time_zone_info.rails_time_zone)
+    departure_datetime.in_time_zone(departure_airport.time_zone_info.rails_time_zone)
   end
 
   def local_time

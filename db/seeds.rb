@@ -63,34 +63,34 @@ orlando = Airport.find_by_code('MCO')
 Flight.create(
   arrival_airport: denver,
   departure_airport: memphis,
-  start_datetime: Time.now.utc + 2.days,
+  departure_datetime: Time.now.utc + 2.days,
   duration: 60
 )
 
 Flight.create(
   arrival_airport: denver,
   departure_airport: memphis,
-  start_datetime: Time.now.utc + 1.days,
+  departure_datetime: Time.now.utc + 1.days,
   duration: 45
 )
 
 Flight.create(
   arrival_airport: denver,
   departure_airport: memphis,
-  start_datetime: Time.new.utc + 6.months + 1.days,
+  departure_datetime: Time.new.utc + 6.months + 1.days,
   duration: 45
 )
 
 Flight.create(
   arrival_airport: denver,
   departure_airport: orlando,
-  start_datetime: Time.new(2022, 6, 1, 22, 15, 0, '-04:00').utc,
+  departure_datetime: Time.new(2022, 6, 1, 22, 15, 0, '-04:00').utc,
   duration: 777
 )
 
 Flight.create(
   arrival_airport: denver,
   departure_airport: orlando,
-  start_datetime: Time.new(2022, 6, 1, 22, 15, 0, 'UTC'),
+  departure_datetime: Time.new(2022, 6, 1, 22, 15, 0, 'UTC'),
   duration: 45
 )
