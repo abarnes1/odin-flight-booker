@@ -14,3 +14,6 @@ Work with drop downs, radio buttons, and nested forms.
 - Search available flights by destination and arrival airports, number of passengers, and departure date
 - Use flight search results to book a flight
 - Require information for all passengers when booking a flight
+
+## Configuration
+ActiveRecord will disable referential integrity while inserting and deleting fixtures.  In order for this to work, the test database user defined in database.yml must have the super user role in the test database.

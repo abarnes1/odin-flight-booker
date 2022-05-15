@@ -1,0 +1,29 @@
+alaska:
+  rails_time_zone: 'Alaska'
+  iana_time_zone: 'America/Juneau'
+  standard_utc_offset_hours: -9
+  daylight_savings_utc_offset_hours: -8
+
+pacific:
+  rails_time_zone: 'Pacific Time (US & Canada)'
+  iana_time_zone: 'America/Los_Angeles'
+  standard_utc_offset_hours: -8
+  daylight_savings_utc_offset_hours: -7
+
+mountain:
+  rails_time_zone: 'Mountain Time (US & Canada)'
+  iana_time_zone: 'America/Denver'
+  standard_utc_offset_hours: -7
+  daylight_savings_utc_offset_hours: -6
+
+central:
+  rails_time_zone: 'Central Time (US & Canada)'
+  iana_time_zone: 'America/Chicago'
+  standard_utc_offset_hours: -6
+  daylight_savings_utc_offset_hours: -5
+
+eastern:
+  rails_time_zone: 'Eastern Time (US & Canada)'
+  iana_time_zone: 'America/New_York'
+  standard_utc_offset_hours: -5
+  daylight_savings_utc_offset_hours: -4

@@ -18,5 +18,11 @@ module FlightBooker
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Allows fixtures to be created with foreign key validation.
+    # Prevents vague foreign key errors while loading fixtures when the
+    # postgresql user for the test database lacks superuser permission required
+    # to disable foreign key constraints.
+    # config.active_record.verify_foreign_keys_for_fixtures = false
   end
 end
