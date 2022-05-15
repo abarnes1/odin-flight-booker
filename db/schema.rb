@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_08_154042) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_14_223234) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_154042) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "time_zone_info_id"
+    t.decimal "latitude", null: false
+    t.decimal "longitude", null: false
     t.index ["code"], name: "index_airports_on_code", unique: true
     t.index ["time_zone_info_id"], name: "index_airports_on_time_zone_info_id"
   end
