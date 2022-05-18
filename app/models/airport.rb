@@ -9,9 +9,7 @@ class Airport < ApplicationRecord
   default_scope { includes(:time_zone_info) }
 
   def local_time
-    # tz = TimeZone.new(time_zone_info.base_utc_offset_hours)
-    # Time.now.in_time_zone(tz)s
-    Time.now.in_time_zone(time_zone_info.tzinfo_time_zone_name)
+    local_time_zone.now
   end
 
   def local_time_zone
