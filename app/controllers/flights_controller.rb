@@ -19,10 +19,7 @@ class FlightsController < ApplicationController
       search_start = local_airport_time_to_utc
       search_range = search_start..(search_start + 1.days)
 
-      # This would cause missing search results for late but before midnight flights
-      # flights = flights.where(start_datetime: Time.find_zone('UTC').parse(params[:departure_date]).all_day)
-
-      flights = flights.where(start_datetime: search_range)
+      flights = flights.where(departure_datetime: search_range)
     end
 
     flights = flights.where(departure_airport_id: params[:departure_airport_id]) if params[:departure_airport_id].present?
