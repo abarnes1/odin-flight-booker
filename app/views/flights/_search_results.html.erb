@@ -5,8 +5,13 @@
 
   <% flights.each do |flight| %>
     <br>
-    <%= flight.departure_airport.code %> <%= display_datetime(flight.local_departure_time) %> 
-    -> <%= flight.arrival_airport.code %> <%= display_datetime(flight.local_arrival_time) %> (<%= flight.duration %> minutes).
+    <% if false %>
+      <%= flight.departure_airport.code %> <%= display_datetime(flight.local_departure_time) %> 
+    -> <%= flight.arrival_airport.code %> <%= display_datetime(flight.local_arrival_time) %> (<%= flight.duration %> minutes).  
+    <% end %>
+
+    <%= summary(flight) %>
+    
   <% end %>
 <% else %>
   No results.
