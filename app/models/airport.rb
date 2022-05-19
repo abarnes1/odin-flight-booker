@@ -8,8 +8,8 @@ class Airport < ApplicationRecord
 
   default_scope { includes(:time_zone_info) }
 
-  def local_time
-    local_time_zone.now
+  def local_time(time_with_zone = local_time_zone.now)
+    time_with_zone.in_time_zone(local_time_zone)
   end
 
   def local_time_zone
