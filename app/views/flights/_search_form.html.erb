@@ -1,32 +1,41 @@
 <%= form_with url: flights_path, method: :get do |form| %>
-  <div class="field">
-    <%= form.label :from, 'From', class: 'label'%>
+  <div class="columns">
+    <div class="column is-vbottom">
+      <div class="field">
+        <%= form.label :from, 'From', class: 'label'%>
+        <div class="select is-fullwidth">
+          <%= select_tag :departure_airport_id, options_for_select(airport_options, params[:departure_airport_id]), include_blank: true, required: true %>
+        </div>
+      </div>
+    </div>
 
-    <div class="select" >
-      <%= select_tag :departure_airport_id, options_for_select(airport_options, params[:departure_airport_id]), include_blank: true, required: true %>
+    <div class="column is-vbottom">
+      <div class="field">
+        <%= form.label :to, 'To', class: 'label'%>
+        <div class="select is-fullwidth">
+          <%= select_tag :arrival_airport_id, options_for_select(airport_options, params[:arrival_airport_id]), include_blank: true, required: true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="column is-2 is-vbottom">
+      <div class="field">
+        <%= form.label :passenger_count, 'Passengers', class: 'label' %>
+        <div class="select is-fullwidth">
+          <%= select_tag :passenger_count, options_for_select((1..4).map { |i| [i, i]}) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="column is-2 is-vbottom">
+      <div class="field">
+        <%= form.label :date, 'Departure Date', class: 'label' %>
+        <%= form.date_field :departure_date, value: params[:departure_date] || Date.today, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="column is-2 is-vbottom">
+      <%= form.submit 'Search', class: 'button', id: 'search-button' %>
     </div>
   </div>
-
-  <div class="field">
-    <%= form.label :to, 'To', class: 'label'%>
-
-    <div class="select">
-      <%= select_tag :arrival_airport_id, options_for_select(airport_options, params[:arrival_airport_id]), include_blank: true, required: true %>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= form.label :passenger_count, 'Passengers', class: 'label' %>
-    
-    <div class="select">
-      <%= select_tag :passenger_count, options_for_select((1..4).map { |i| [i, i]}) %>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= form.label :date, 'Departure Date', class: 'label' %>
-    <%= form.date_field :departure_date, value: params[:departure_date] || Date.today, class: 'input' %>
-  </div>
-
-  <%= form.submit 'Search', class: 'button' %>
 <% end %>

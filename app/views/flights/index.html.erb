@@ -1,7 +1,9 @@
-<%= params %>
+<% if false %>
+  <%= params %>  
+<% end %>
 
 <section>
-  <h1 class="is-size-2 has-text-centered py-6">Find Flights</h1>
+  <h1 class="is-size-2 has-text-centered py-4">Find Flights</h1>
 
   <div class="container">
     <%= render partial: 'search_form', locals: { airport_options: @airport_options } %>
