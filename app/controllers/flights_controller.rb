@@ -1,6 +1,6 @@
 class FlightsController < ApplicationController
   def index
-    @airport_options = Airport.all.order(:code).map { |airport| ["#{airport.code} (#{airport.name})", airport.id] }
+    @airport_options = Airport.all.order(:code).map { |airport| [helpers.airport_select_value(airport), airport.id] }
     return unless valid_search?
 
     @search_results = search_flights(flight_search_params)
@@ -29,8 +29,7 @@ class FlightsController < ApplicationController
     flights = flights.where(departure_datetime: day_search_range)
     flights = flights.where(departure_airport_id: params[:departure_airport_id])
     flights = flights.where(arrival_airport_id: params[:arrival_airport_id])
-
-    flights
+    flights.where('departure_datetime > ?', Time.zone.now)
   end
 
   def local_airport_time_to_utc
