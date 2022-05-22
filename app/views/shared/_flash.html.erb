@@ -1,0 +1,9 @@
+<% flash.each do |type, msg| %>
+  <% if type == 'alert' %>
+    <div class="has-background-danger has-text-light py-1">
+      <p class="has-text-centered">
+        <%= msg %>
+      </p>
+    </div>  
+  <% end %>
+<% end %>
