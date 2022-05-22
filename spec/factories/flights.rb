@@ -1,3 +1,5 @@
+require_relative '../../lib/flight_duration_calculator'
+
 FactoryBot.define do
   factory :flight do
     transient do
