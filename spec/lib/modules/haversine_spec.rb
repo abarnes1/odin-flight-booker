@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../app/lib/modules/haversine'
+require_relative '../../../lib/modules/haversine'
 
 RSpec.describe Haversine do
   describe '#haversine_formula' do
@@ -11,12 +11,12 @@ RSpec.describe Haversine do
       expected_miles = 1072
 
       actual_miles = Haversine.haversine_formula(
-                      kansas_city.latitude, 
-                      kansas_city.longitude, 
-                      orlando.latitude, 
+                      kansas_city.latitude,
+                      kansas_city.longitude,
+                      orlando.latitude,
                       orlando.longitude
                     ).round
-      
+
       expect(actual_miles).to eq(expected_miles)
     end
   end

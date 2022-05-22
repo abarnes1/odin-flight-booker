@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../app/lib/flight_duration_calculator'
+require_relative '../../lib/flight_duration_calculator'
 
 RSpec.describe FlightDurationCalculator do
   describe '#flight_minutes' do
