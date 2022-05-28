@@ -3,15 +3,26 @@
 <% if flights.count > 0 %>
   <%= flights.count %> result(s) found!
 
-  <% flights.each do |flight| %>
-    <br>
-    <% if false %>
-      <%= flight.departure_airport.code %> <%= display_datetime(flight.local_departure_time) %> 
-    -> <%= flight.arrival_airport.code %> <%= display_datetime(flight.local_arrival_time) %> (<%= flight.duration %> minutes).  
-    <% end %>
+  <br>
 
-    <%= summary(flight) %>
-    
+  <%= form_with url: new_booking_path, method: :get do |form| %>
+    <% flights.each do |flight| %>
+
+
+      <div class="control">
+        <%= form.radio_button :flight, flight.id, required: true %>
+        <%= form.label :flight, summary(flight), class: 'radio' %>
+        
+
+        <% if false %>
+          <%= summary(flight) %>  
+        <% end %>
+        
+      </div>
+
+      
+    <% end %>
+    <%= form.submit 'Book Flight', class: 'button', id: 'book-button' %>
   <% end %>
 <% else %>
   No results.
