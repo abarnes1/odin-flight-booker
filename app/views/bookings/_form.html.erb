@@ -1,33 +1,36 @@
 <%= form_with model: booking do |form| %>
-  <h1>Booking Owner:</h1>
-
+  <p class="is-size-4 has-text-weight-bold">Booking Contact:</p>
+  
   <div class="columns">
     <div class="column is-6">
       <%= form.label :name, 'Name', class: 'label' %>
-      <%= form.text_field :name, class: 'input', value: 'a' %>
+      <%= form.text_field :name, class: 'input', placeholder: 'Name' %>
     </div>
 
     <div class="column is-6">
       <%= form.label :email, 'Email', class: 'label' %>
-      <%= form.email_field :email, class: 'input', value: 'a@a.com' %>
+      <%= form.email_field :email, class: 'input', placeholder: 'Email' %>
     </div>
   </div>
 
-  <h1>Passengers:</h1>
+  <div class="block is-size-4 has-text-weight-bold mb-1">Passenger Details:</div>
 
   <%= form.fields_for :passengers do |passengers_form| %>
-    <div class="columns">
-      <div class="column is-6'">
+    <div class="columns mb-0">
+      <div class="column is-size-5 has-text-weight-bold mb-0 pb-0">
+        <%= "Passenger #{passengers_form.index + 1}" %>
+      </div>
+    </div>
+
+    <div class="columns mt-0">
+      <div class="column is-6 pt-1">
         <%= passengers_form.label :name, 'Name', class: 'label' %>
-
-        <% temp = (passengers_form.options[:child_index].to_i + 98).chr %>
-
-        <%= passengers_form.text_field :name, class: 'input', value: temp %>
+        <%= passengers_form.text_field :name, class: 'input', placeholder: 'Name' %>
       </div>
 
-      <div class="column is-6">
+      <div class="column is-6 pt-1">
         <%= passengers_form.label :email, 'Email', class: 'label' %>
-        <%= passengers_form.email_field :email, class: 'input', value: "#{temp}@#{temp}.com" %>
+        <%= passengers_form.email_field :email, class: 'input', placeholder: "Email" %>
       </div>
     </div>
   <% end %>
