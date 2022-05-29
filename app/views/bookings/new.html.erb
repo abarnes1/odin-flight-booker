@@ -1,3 +1,15 @@
 <h1>booking#new</h1>
 
 <%= params %>
+
+<br>
+Booking <%= @booking.passengers.length %> passengers for flight:
+<br>
+
+<%= summary(@flight) %>
+
+<div class="section">
+  <div class="container">
+    <%= render partial: 'form', locals: { flight: @flight, booking: @booking } %>
+  </div>
+</div>

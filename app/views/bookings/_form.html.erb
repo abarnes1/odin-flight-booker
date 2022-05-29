@@ -1,0 +1,37 @@
+<%= form_with model: booking do |form| %>
+  <h1>Booking Owner:</h1>
+
+  <div class="columns">
+    <div class="column is-6">
+      <%= form.label :name, 'Name', class: 'label' %>
+      <%= form.text_field :name, class: 'input', value: 'a' %>
+    </div>
+
+    <div class="column is-6">
+      <%= form.label :email, 'Email', class: 'label' %>
+      <%= form.email_field :email, class: 'input', value: 'a@a.com' %>
+    </div>
+  </div>
+
+  <h1>Passengers:</h1>
+
+  <%= form.fields_for :passengers do |passengers_form| %>
+    <div class="columns">
+      <div class="column is-6'">
+        <%= passengers_form.label :name, 'Name', class: 'label' %>
+
+        <% temp = (passengers_form.options[:child_index].to_i + 98).chr %>
+
+        <%= passengers_form.text_field :name, class: 'input', value: temp %>
+      </div>
+
+      <div class="column is-6">
+        <%= passengers_form.label :email, 'Email', class: 'label' %>
+        <%= passengers_form.email_field :email, class: 'input', value: "#{temp}@#{temp}.com" %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :flight_id, value: booking.flight_id %>
+  <%= form.submit 'Book Flight', class: 'button' %>
+<% end %>
