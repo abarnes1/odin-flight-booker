@@ -25,6 +25,7 @@ class BookingsController < ApplicationController
     generate_confirmation_code
 
     if @booking.save
+      flash[:notice] = 'Your flight is booked!'
       redirect_to booking_path(@booking)
     else
       render :new, status: :unprocessable_entity

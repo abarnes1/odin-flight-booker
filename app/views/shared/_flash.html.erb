@@ -6,4 +6,12 @@
       </p>
     </div>
   <% end %>
+
+  <% if type == 'notice' %>
+    <div class="has-background-success has-text-light py-1">
+      <p class="has-text-centered">
+        <%= msg %>
+      </p>
+    </div>
+  <% end %>
 <% end %>
