@@ -1,6 +1,29 @@
-<div class="section">
+<section>
+  <h1 class="is-size-2 has-text-centered py-4">Booking Details</h1>
+
+  <div class="container">
+    <p>Flight:</p>
+    <p><%= summary(@booking.flight) %></p>
+
+    <p class=pt-4>Confirmation Code:</p>
+    <p><%= @booking.confirmation_code %></p>
+
+    <p class="pt-4">Booked By:</p>
+    <p><%= @booking.name %> (<%= @booking.email %>)</p>
+
+    <p class="pt-4">Passengers:</p>
+    <% @booking.passengers.each do |passenger| %>
+        <p><%= passenger.name %> (<%= passenger.email %>)</p>
+    <% end %>
+
+  </div>
+</section>
+
+<% if false %>
+  <div class="section">
   <h1>booking#show</h1>
   <p>Showing booking for: <%= @booking.confirmation_code %></p>
   <p>Name: <%= @booking.name %></p>
   <p>Email: <%= @booking.email %></p>
-</div>
+</div>  
+<% end %>
