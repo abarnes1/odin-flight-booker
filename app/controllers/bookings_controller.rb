@@ -1,4 +1,13 @@
 class BookingsController < ApplicationController
+  def index
+    return unless search?
+
+    @booking = Booking.where(booking_params).first
+    redirect_to booking_path(@booking) if @booking
+
+    flash.now[:alert] = 'Booking not found.'
+  end
+
   def new
     @flight = Flight.find(booking_params[:flight_id])
     @booking = @flight.bookings.build(booking_params)
@@ -25,7 +34,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:flight_id, :name, :email, passengers_attributes: [:name, :email])
+    params.require(:booking).permit(:flight_id, :name, :email, :confirmation_code, passengers_attributes: %i[name email])
   end
 
   def generate_confirmation_code
@@ -33,5 +42,9 @@ class BookingsController < ApplicationController
     10.times { temp_code << rand(65..90).chr }
 
     @booking.confirmation_code = temp_code
+  end
+
+  def search?
+    return true if params[:commit] == 'Search'
   end
 end
