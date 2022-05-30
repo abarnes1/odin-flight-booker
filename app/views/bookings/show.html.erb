@@ -15,15 +15,5 @@
     <% @booking.passengers.each do |passenger| %>
         <p><%= passenger.name %> (<%= passenger.email %>)</p>
     <% end %>
-
   </div>
 </section>
-
-<% if false %>
-  <div class="section">
-  <h1>booking#show</h1>
-  <p>Showing booking for: <%= @booking.confirmation_code %></p>
-  <p>Name: <%= @booking.name %></p>
-  <p>Email: <%= @booking.email %></p>
-</div>  
-<% end %>
