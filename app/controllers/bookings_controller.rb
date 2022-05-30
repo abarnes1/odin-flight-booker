@@ -3,29 +3,27 @@ class BookingsController < ApplicationController
     @flight = Flight.find(booking_params[:flight_id])
     @booking = @flight.bookings.build(booking_params)
 
-    # passengers = params[:passenger_count].present? ? params[:passenger_count].to_i : 1
-    passengers = params[:booking][:passenger_count].to_i 
+    passengers = params[:booking][:passenger_count].to_i
     passengers.times { @booking.passengers.build }
   end
 
   def show
-
+    @booking = Booking.find(params[:id])
   end
 
   def create
     @booking = Booking.new(booking_params)
     generate_confirmation_code
 
-    debugger
-
-
-    @booking.save
-
-    redirect_to :root
+    if @booking.save
+      redirect_to booking_path(@booking)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
-  
+
   def booking_params
     params.require(:booking).permit(:flight_id, :name, :email, passengers_attributes: [:name, :email])
   end
