@@ -22,7 +22,7 @@
       <div class="field">
         <%= form.label :passenger_count, 'Passengers', class: 'label' %>
         <div class="select is-fullwidth">
-          <%= select_tag :passenger_count, options_for_select((1..4).map { |i| [i, i]}) %>
+          <%= select_tag :passenger_count, options_for_select((1..4).map { |i| [i, i]}, params[:passenger_count].to_i) %>
         </div>
       </div>
     </div>
