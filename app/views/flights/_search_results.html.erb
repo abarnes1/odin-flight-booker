@@ -7,9 +7,9 @@
 
   <%= form_with scope: :booking, url: new_booking_path, method: :get do |form| %>
     <% flights.each do |flight| %>
-      <div class="control">
+      <div class="control" id="<%= dom_id(flight) %>">
         <%= form.radio_button :flight_id, flight.id, required: true %>
-        <%= form.label :flight_id, summary(flight), class: 'radio' %>
+        <%= form.label :flight_id, flight_summary(flight), class: 'radio' %>
       </div>
     <% end %>
 
