@@ -2,6 +2,7 @@ require 'rails_helper'
 # require_relative '../support/chrome'
 
 RSpec.describe 'Flight Search', type: :system do
+  include ActionView::RecordIdentifier
   include AirportHelper
   include FlashHelper
 
@@ -31,8 +32,8 @@ RSpec.describe 'Flight Search', type: :system do
 
       click_on 'Search'
 
-      expect(page).to have_content(summary(matching_flight))
-      expect(page).not_to have_content(summary(not_matching_flight))
+      expect(page).to have_selector(:id, dom_id(matching_flight))
+      expect(page).to_not have_selector(:id, dom_id(not_matching_flight))
     end
 
     it 'does not find past flights' do
@@ -46,7 +47,7 @@ RSpec.describe 'Flight Search', type: :system do
 
       click_on 'Search'
 
-      expect(page).not_to have_content(summary(past_flight))
+      expect(page).not_to have_selector(:id, dom_id(past_flight))
     end
   end
 
