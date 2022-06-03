@@ -14,8 +14,6 @@ RSpec.describe 'Flight Search', type: :system do
     let(:denver) { airports(:denver) }
     let(:cleveland) { airports(:cleveland) }
 
-    let(:departure_datetime) { orlando.local_time.tomorrow.beginning_of_day + 8.hours }
-
     before do
       visit flights_path
     end
@@ -23,7 +21,6 @@ RSpec.describe 'Flight Search', type: :system do
     it 'finds matching flights' do
       departure_datetime = orlando.local_time.tomorrow.beginning_of_day + 8.hours
       matching_flight = create(:flight, departing: orlando, at: departure_datetime, arriving: denver)
-      not_matching_flight = create(:flight, departing: orlando, at: departure_datetime, arriving: cleveland)
 
       select(airport_select_value(orlando), from: 'departure_airport_id')
       select(airport_select_value(denver), from: 'arrival_airport_id')
@@ -33,6 +30,19 @@ RSpec.describe 'Flight Search', type: :system do
       click_on 'Search'
 
       expect(page).to have_selector(:id, dom_id(matching_flight))
+    end
+
+    it 'does not find non-matching flights' do
+      departure_datetime = orlando.local_time.tomorrow.beginning_of_day + 8.hours
+      not_matching_flight = create(:flight, departing: orlando, at: departure_datetime, arriving: cleveland)
+
+      select(airport_select_value(orlando), from: 'departure_airport_id')
+      select(airport_select_value(denver), from: 'arrival_airport_id')
+
+      fill_in('departure_date', with: orlando.local_time_zone.tomorrow)
+
+      click_on 'Search'
+
       expect(page).to_not have_selector(:id, dom_id(not_matching_flight))
     end
 

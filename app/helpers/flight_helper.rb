@@ -3,9 +3,9 @@ module FlightHelper
     datetime.strftime('%m/%d/%Y %I:%M %p')
   end
 
-  def summary(flight)
+  def flight_summary(flight)
     "#{flight.departure_airport.code} #{display_datetime(flight.local_departure_time)} -> " \
     "#{flight.arrival_airport.code} #{display_datetime(flight.local_arrival_time)}" \
-    "(#{flight.duration} minutes)."
+    " (#{flight.duration} minutes)."
   end
 end
