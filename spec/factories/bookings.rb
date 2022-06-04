@@ -2,11 +2,13 @@ require 'debug'
 FactoryBot.define do
   factory :booking do
     transient do
+      flight { nil }
     end
 
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
 
+    flight_id { flight&.id }
     name { "#{first_name} #{last_name}" }
     email { "#{first_name[0]}#{last_name}@#{Faker::Internet.domain_name}".downcase }
     confirmation_code { Faker::Alphanumeric.alpha(number: 10).upcase }
@@ -22,8 +24,12 @@ FactoryBot.define do
         passenger_count { 1 }
       end
 
-      passengers do
-        Array.new(passenger_count) { association(:passenger) }
+      after(:build) do |booking, evaluator|
+        evaluator.passenger_count.times { booking.passengers << build(:passenger) }
+      end
+
+      after(:create) do |booking, _evaluator|
+        booking.passengers.each { |passenger| passenger.booking_id = booking.id }
       end
     end
   end
