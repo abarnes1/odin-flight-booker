@@ -3,7 +3,7 @@
 
   <div class="container">
     <p>Flight:</p>
-    <p id='<%= dom_id(booking) %>'><%= flight_summary(@booking.flight) %></p>
+    <p id='<%= dom_id(@booking) %>'><%= flight_summary(@booking.flight) %></p>
 
     <p class=pt-4>Confirmation Code:</p>
     <p><%= @booking.confirmation_code %></p>

@@ -5,11 +5,11 @@
 
   <br>
 
-  <%= form_with scope: :booking, url: new_booking_path, method: :get do |form| %>
+  <%= form_with url: new_booking_path, method: :get do |form| %>
     <% flights.each do |flight| %>
-      <div class="control" id="<%= dom_id(flight) %>">
-        <%= form.radio_button :flight_id, flight.id, required: true %>
-        <%= form.label :flight_id, flight_summary(flight), class: 'radio' %>
+      <div class="control">
+        <%= form.radio_button :flight_id, flight.id, id: dom_id(flight), required: true %>
+        <%= form.label dom_id(flight), flight_summary(flight), class: 'radio'  %>
       </div>
     <% end %>
 
