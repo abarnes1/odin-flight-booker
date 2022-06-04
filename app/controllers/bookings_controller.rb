@@ -2,10 +2,10 @@ class BookingsController < ApplicationController
   def index
     return unless search?
 
-    @booking = Booking.where(booking_params).first
+    @booking = booking_search(params)
     redirect_to booking_path(@booking) if @booking
 
-    flash.now[:alert] = 'Booking not found.'
+    flash.now[:alert] = helpers.booking_not_found_message
   end
 
   def new
@@ -47,5 +47,12 @@ class BookingsController < ApplicationController
 
   def search?
     return true if params[:commit] == 'Search'
+  end
+
+  def booking_search(params)
+    booking = Booking.all
+    booking.where(confirmation_code: params[:confirmation_code])
+    booking.where(email: params[:email])
+    booking.first
   end
 end

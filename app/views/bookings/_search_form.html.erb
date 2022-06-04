@@ -4,7 +4,7 @@
       <div class="field">
         <%= form.label :confirmation_code, 'Confirmation Code', class: 'label' %>
         <%= form.text_field :confirmation_code, class: 'input is-uppercase', placeholder: 'Code',
-          value: (params[:booking][:confirmation_code] if params[:booking].present?), required: true %>
+          value: params[:confirmation_code], required: true %>
       </div>
     </div>
   </div>
@@ -14,7 +14,7 @@
       <div class="field">
         <%= form.label :email, 'Email', class: 'label' %>
         <%= form.email_field :email, class: 'input', placeholder: 'Email', 
-          value: (params[:booking][:email] if params[:booking].present?), required: true %>
+          value: params[:email], required: true %>
       </div>
     </div>
   </div>
