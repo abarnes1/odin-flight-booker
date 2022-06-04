@@ -22,7 +22,6 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    generate_confirmation_code
 
     if @booking.save
       flash[:notice] = helpers.booking_success_message
@@ -36,13 +35,6 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:flight_id, :name, :email, :confirmation_code, passengers_attributes: %i[name email])
-  end
-
-  def generate_confirmation_code
-    temp_code = String.new
-    10.times { temp_code << rand(65..90).chr }
-
-    @booking.confirmation_code = temp_code
   end
 
   def search?
