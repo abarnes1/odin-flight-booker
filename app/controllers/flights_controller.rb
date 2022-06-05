@@ -30,6 +30,7 @@ class FlightsController < ApplicationController
     flights = flights.where(departure_airport_id: params[:departure_airport_id])
     flights = flights.where(arrival_airport_id: params[:arrival_airport_id])
     flights.where('departure_datetime > ?', Time.zone.now)
+    flights.order(:departure_datetime)
   end
 
   def local_airport_time_to_utc
