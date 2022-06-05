@@ -11,3 +11,7 @@
 .is-vbottom {
   margin-top: auto;
 }
+
+.has-flex-gap-1 {
+  gap: 20px;
+}

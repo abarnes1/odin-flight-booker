@@ -2,8 +2,13 @@
   <h1 class="is-size-2 has-text-centered py-4">Booking Details</h1>
 
   <div class="container">
-    <p>Flight:</p>
-    <p id='<%= dom_id(@booking) %>'><%= flight_summary(@booking.flight) %></p>
+    <div class="columns is-centered">
+      <%= display_departure_date(@booking.flight.local_departure_time) %>   
+    </div>
+
+    <div class="columns is-centered">
+      <%= render partial: 'flights/summary', locals: { flight: @booking.flight } %>   
+    </div>
 
     <p class=pt-4>Confirmation Code:</p>
     <p><%= @booking.confirmation_code %></p>

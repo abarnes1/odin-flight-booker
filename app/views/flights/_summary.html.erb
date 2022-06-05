@@ -1,0 +1,32 @@
+<div class='is-flex is-align-items-center has-flex-gap-1'>
+  <div class="has-text-centered">
+    <div class="is-size-4 has-text-weight-bold">
+      <%= flight.departure_airport.code %>
+    </div>
+
+    <div>
+      <%= display_time(flight.local_departure_time) %>
+    </div>
+  </div>
+
+  <div class="has-text-centered">
+    <div class="has-text-weight-bold is-size-4">
+      <i class="fa-solid fa-arrow-right"></i>
+      <i class="fa-solid fa-plane"></i>
+    </div>
+
+    <div class="px-2">
+      <%= display_duration(flight.duration) %>
+    </div>
+  </div>
+
+  <div class="has-text-centered">
+    <div class="is-size-4 has-text-weight-bold">
+      <%= flight.arrival_airport.code %>
+    </div>
+
+    <div>
+      <%= display_time(flight.local_arrival_time) %>
+    </div>
+  </div>
+</div>

@@ -1,15 +1,19 @@
 <h1 class="is-size-3 has-text-centered py-6">Search Results</h1>
 
 <% if flights.count > 0 %>
-  <%= flights.count %> result(s) found!
-
-  <br>
+  <p>
+    <%= flights.count %> result(s) found!
+  </p>
 
   <%= form_with url: new_booking_path, method: :get do |form| %>
     <% flights.each do |flight| %>
-      <div class="control">
-        <%= form.radio_button :flight_id, flight.id, id: dom_id(flight), required: true %>
-        <%= form.label dom_id(flight), flight_summary(flight), class: 'radio'  %>
+      <div class="is-align-items-center columns">
+        <%= form.radio_button :flight_id, flight.id, id: dom_id(flight), required: true, class: "column is-1" %>
+        <%= form.label dom_id(flight), (render partial: "summary", locals: { flight: flight }), class: "column is-11" %>  
+
+        <% if false %>
+          <%= form.label dom_id(flight), (render partial: "summary", locals: { flight: flight }), class: 'radio is-fullwidth'  %>  
+        <% end %>
       </div>
     <% end %>
 
