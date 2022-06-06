@@ -11,7 +11,7 @@
         <div class="column has-text-centered is-narrow">
           <%= form.radio_button :flight_id, flight.id, id: dom_id(flight), required: true, class: 'px-2' %>
         </div>
-        <div class="column is-one-third-widescreen is-one-half-desktop is-one-half-tablet">
+        <div class="column is-one-third-widescreen is-half-desktop is-half-tablet is-three-quarters-mobile">
           <%= form.label dom_id(flight), (render partial: "summary", locals: { flight: flight })%>
         </div>
       </div>
