@@ -1,9 +1,9 @@
-<% if false %>
-  <%= params %>  
-<% end %>
-
 <div class="section">
   <h1 class="is-size-2 has-text-centered py-4">Flight Booking Details</h1>
+  <div class="columns is-centered">
+    <%= display_departure_date(@booking.flight.local_departure_time) %>   
+  </div>
+
   <div class="columns is-centered">
     <%= render partial: 'flights/summary', locals: { flight: @flight } %>
   </div>
