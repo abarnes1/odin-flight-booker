@@ -5,23 +5,23 @@
     <%= flights.count %> flight(s) found
   </p>
 
-    <div class="columns is-centered is-vcentered">
-    <div class="column is-5">
-        <%= form_with url: new_booking_path, method: :get do |form| %>
-          <% flights.each do |flight| %>
-          <div class="columns is-centered is-6 is-vcentered">
-            <div class="column is-1">
-              <%= form.radio_button :flight_id, flight.id, id: dom_id(flight), required: true %>
-            </div>
-              <%= form.label dom_id(flight), (render partial: "summary", locals: { flight: flight }), class: "column" %>
-          </div>
-          <% end %>
-      
-          <%= form.hidden_field :passenger_count, value: params[:passenger_count] %>
-          <%= form.submit 'Book Flight', class: 'button', id: 'book-button' %>
-        <% end %>
+  <%= form_with url: new_booking_path, method: :get do |form| %>
+    <% flights.each do |flight| %>
+      <div class="columns is-centered is-vcentered is-mobile px-1">
+        <div class="column has-text-centered is-narrow">
+          <%= form.radio_button :flight_id, flight.id, id: dom_id(flight), required: true, class: 'px-2' %>
+        </div>
+        <div class="column is-one-third-widescreen is-one-half-desktop is-one-half-tablet">
+          <%= form.label dom_id(flight), (render partial: "summary", locals: { flight: flight })%>
+        </div>
+      </div>
+    <% end %>
+
+    <%= form.hidden_field :passenger_count, value: params[:passenger_count] %>
+    <div class="has-text-centered">
+      <%= form.submit 'Book Flight', class: 'button', id: 'book-button' %>
     </div>
-    </div>  
+  <% end %>
   
 <% else %>
   No results.
