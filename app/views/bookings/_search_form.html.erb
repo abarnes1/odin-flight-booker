@@ -1,23 +1,21 @@
 <%= form_with url: bookings_path, scope: :booking, method: :get do |form| %>
-  <div class="columns">
-    <div class="column">
-      <div class="field">
-        <%= form.label :confirmation_code, 'Confirmation Code', class: 'label' %>
-        <%= form.text_field :confirmation_code, class: 'input is-uppercase', placeholder: 'Code',
-          value: params[:confirmation_code], required: true %>
-      </div>
+  <div class="columns is-centered">
+    <div class="column is-4 field">
+      <%= form.label :confirmation_code, 'Confirmation Code', class: 'label' %>
+      <%= form.text_field :confirmation_code, class: 'input is-uppercase', placeholder: 'Code',
+        value: params[:confirmation_code], required: true %>
     </div>
   </div>
 
-  <div class="columns">
-    <div class="column">
-      <div class="field">
-        <%= form.label :email, 'Email', class: 'label' %>
-        <%= form.email_field :email, class: 'input', placeholder: 'Email', 
-          value: params[:email], required: true %>
-      </div>
+  <div class="columns is-centered">
+    <div class="column is-4 field">
+      <%= form.label :email, 'Email', class: 'label' %>
+      <%= form.email_field :email, class: 'input', placeholder: 'Email', 
+        value: params[:email], required: true %>
     </div>
   </div>
 
-  <%= form.submit 'Search', class: 'button', id: 'search-button' %>
+  <div class="has-text-centered">
+    <%= form.submit 'Search', class: 'button', id: 'search-button' %>
+  </div>
 <% end %>
