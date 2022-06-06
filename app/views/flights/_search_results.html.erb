@@ -7,7 +7,7 @@
 
   <%= form_with url: new_booking_path, method: :get do |form| %>
     <% flights.each do |flight| %>
-      <div class="columns is-centered is-vcentered is-mobile px-1">
+      <div class="columns is-centered is-vcentered is-mobile">
         <div class="column has-text-centered is-narrow">
           <%= form.radio_button :flight_id, flight.id, id: dom_id(flight), required: true, class: 'px-2' %>
         </div>
