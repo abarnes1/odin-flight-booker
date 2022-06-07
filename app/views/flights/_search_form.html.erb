@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'detect_timezone' %>
+<% end %>
+
 <%= form_with url: flights_path, method: :get do |form| %>
   <div class="columns">
     <div class="column is-vbottom">
