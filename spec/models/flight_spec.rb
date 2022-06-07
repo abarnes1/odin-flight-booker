@@ -12,20 +12,16 @@ RSpec.describe Flight, type: :model do
   context 'when trying to change departure airport attribute through association' do
     it 'is not persisted' do
       flight.departure_airport.name = cleveland.name
-      flight.save
-      flight.reload
 
-      expect(flight.departure_airport).to eq(orlando)
+      expect { flight.departure_airport.save }.to raise_error(ActiveRecord::ReadOnlyRecord)
     end
   end
 
   context 'when trying to change arrival airport attribute through association' do
-    it 'is not persisted' do
+    it 'is raises a read only error' do
       flight.arrival_airport.name = cleveland.name
-      flight.save
-      flight.reload
 
-      expect(flight.departure_airport).to eq(orlando)
+      expect { flight.arrival_airport.save }.to raise_error(ActiveRecord::ReadOnlyRecord)
     end
   end
 end
