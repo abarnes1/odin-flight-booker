@@ -1,20 +1,20 @@
 <nav class="navbar has-background-dark is-transparent">
   <div class="navbar-brand">
-    <%= link_to flights_path, class: "navbar-item has-text-light" do %>
+    <%= link_to flights_path, data: { turbo: false }, class: "navbar-item has-text-light" do %>
       <i class="fa-solid fa-feather pr-4 logo-icon"></i>
       <span class="is-size-3">Goose</span>
     <% end %>
 
-    <a href="" class="navbar-burger has-text-light">
+    <a class="navbar-burger has-text-light" id="burger">
       <span></span>
       <span></span>
       <span></span>
     </a>
   </div>
 
-  <div class="navbar-menu">
+  <div class="navbar-menu has-background-dark" id="nav-links">
     <div class="navbar-end">
-      <%= link_to bookings_path, class: "navbar-item has-text-light" do %>
+      <%= link_to bookings_path, data: { turbo: false }, class: "navbar-item has-text-light" do %>
         <i class="fa-solid fa-search pr-2"></i>
         <span>Lookup Confirmation</span>
       <% end %>
