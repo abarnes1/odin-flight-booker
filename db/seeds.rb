@@ -18,7 +18,6 @@ pacific_time = TimeZoneInfo.create(
   iana_time_zone: 'America/Los_Angeles',
   standard_utc_offset_hours: -8,
   daylight_savings_utc_offset_hours: -7
-
 )
 
 mountain_time = TimeZoneInfo.create(
@@ -44,15 +43,12 @@ eastern_time = TimeZoneInfo.create(
 
 Airport.create(
   [
-    { code: 'MEM', name: 'Memphis', time_zone_info: central_time, latitude: 35.042068, longitude: -89.979173 },
     { code: 'DEN', name: 'Denver', time_zone_info: mountain_time, latitude: 39.8560963, longitude: -104.67373759999998 },
-    { code: 'MKE', name: 'Milwaukee', time_zone_info: central_time, latitude: 42.9475534, longitude: -87.896646 },
     { code: 'DFW', name: 'Dallas - Fort Worth', time_zone_info: central_time, latitude: 32.8998091, longitude: -97.04033520000002 },
     { code: 'CLE', name: 'Cleveland', time_zone_info: eastern_time, latitude: 41.412434, longitude: -81.847992 },
     { code: 'MCI', name: 'Kansas City', time_zone_info: central_time, latitude: 39.3006427, longitude: -94.71259370000001 },
     { code: 'MCO', name: 'Orlando', time_zone_info: eastern_time, latitude: 28.4311577, longitude: -81.308083 },
     { code: 'ANC', name: 'Anchorage', time_zone_info: alaska_time, latitude: 61.175886, longitude: -149.990079 },
     { code: 'LAX', name: 'Los Angeles', time_zone_info: pacific_time, latitude: 33.9415889, longitude: -118.40853 },
-    { code: 'LIT', name: 'Little Rock', time_zone_info: central_time, latitude: 34.730705, longitude: -92.221653 }
   ]
 )
