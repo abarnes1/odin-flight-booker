@@ -1,8 +1,18 @@
 # frozen_string_literal: true
 
 namespace :flights do
-  # Seed today + [days] worth of flights, starting at [offset] days away.
   desc 'Add n days of flight data'
+  # Start at [offset] days away and add [days] worth of flights.
+
+  # Flights for today:
+  # rake flights:add[0,1] -> Start at today and add one day of flights.
+
+  # Flights for yesterday:
+  # rake flights:add[0, -1] -> Start at yesterday and add one day of flights.
+
+  # Flights for a the third week from now:
+  # rake flights:add[7,14] -> Start at 14 days from now and add 7 days of flights.
+
   task :add, %i[offset days] => :environment do |_task, args|
     number_of_days = [nil, '0'].include?(args[:days]) ? 1 : args[:days].to_i
     offset_days = args[:offset].nil? ? 0 : args[:offset].to_i
