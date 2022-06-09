@@ -17,6 +17,8 @@ class BookingsController < ApplicationController
   end
 
   def show
+    redirect_to bookings_path if request.referer.nil?
+
     @booking = Booking.find(params[:id])
   end
 
@@ -42,9 +44,8 @@ class BookingsController < ApplicationController
   end
 
   def booking_search(params)
-    booking = Booking.all
-    booking.where(confirmation_code: params[:confirmation_code])
-    booking.where(email: params[:email])
+    booking = Booking.where(confirmation_code: params[:confirmation_code])
+    booking = booking.where(email: params[:email])
     booking.first
   end
 end

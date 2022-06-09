@@ -1,4 +1,4 @@
-<%= form_with url: bookings_path, scope: :booking, method: :get do |form| %>
+<%= form_with url: bookings_path, method: :get do |form| %>
   <div class="columns is-centered">
     <div class="column is-4 field">
       <%= form.label :confirmation_code, 'Confirmation Code', class: 'label' %>
@@ -14,6 +14,8 @@
         value: params[:email], required: true %>
     </div>
   </div>
+
+  <%= form.hidden_field :passenger_count, value: params[:passenger_count] %>
 
   <div class="has-text-centered">
     <%= form.submit 'Search', class: 'button', id: 'search-button' %>
