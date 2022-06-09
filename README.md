@@ -3,7 +3,7 @@
 One way [flight booking project](https://www.theodinproject.com/lessons/ruby-on-rails-flight-booker) from 
 [The Odin Project's](https://www.theodinproject.com/) Ruby on Rails curriculum.
 
-View a live version of the site here.  This site is configured to only have 30 days worth of flights.  Bookings can be looked up for up to 30 days after the booked flight departs.
+View a live version of the site [here](https://mighty-sands-91528.herokuapp.com/).  This site is configured to only have 30 days worth of flights.  Bookings can be looked up for up to 30 days after the booked flight departs.
 
 # Requirements
 
