@@ -1,4 +1,3 @@
-require 'debug'
 FactoryBot.define do
   factory :booking do
     transient do
