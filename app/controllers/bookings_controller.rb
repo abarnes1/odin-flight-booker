@@ -17,7 +17,10 @@ class BookingsController < ApplicationController
   end
 
   def show
-    redirect_to bookings_path if request.referer.nil?
+    if request.referer.nil?
+      redirect_to bookings_path
+      return
+    end
 
     @booking = Booking.find(params[:id])
   end
