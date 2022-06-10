@@ -47,7 +47,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_search(params)
-    booking = Booking.where(confirmation_code: params[:confirmation_code])
+    booking = Booking.where(confirmation_code: params[:confirmation_code].upcase)
     booking = booking.where(email: params[:email])
     booking.first
   end
