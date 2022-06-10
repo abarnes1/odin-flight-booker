@@ -1,11 +1,12 @@
-<section>
+
   <h1 class="is-size-2 has-text-centered py-4">Booking Details</h1>
 
-  <div class="container">
-    <div class="columns is-centered">
+  <p class="has-text-centered">
       <%= display_departure_date(@booking.flight.local_departure_time) %>   
-    </div>
+  </p>
 
+<section class="section pt-3">
+  <div class="container">
     <div class="columns is-centered">
       <%= render partial: 'flights/summary', locals: { flight: @booking.flight } %>   
     </div>
