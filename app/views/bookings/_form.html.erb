@@ -7,12 +7,12 @@
   <div class="columns is-centered">
     <div class="column is-4">
       <%= form.label :name, 'Name', class: 'label' %>
-      <%= form.text_field :name, class: 'input', placeholder: 'Name' %>
+      <%= form.text_field :name, class: 'input', placeholder: 'Name', required: true %>
     </div>
 
     <div class="column is-4">
       <%= form.label :email, 'Email', class: 'label' %>
-      <%= form.email_field :email, class: 'input', placeholder: 'Email' %>
+      <%= form.email_field :email, class: 'input', placeholder: 'Email', required: true %>
     </div>
   </div>
 
@@ -32,12 +32,12 @@
     <div class="columns is-centered">
       <div class="column is-4 pt-1">
         <%= passengers_form.label :name, 'Name', class: 'label' %>
-        <%= passengers_form.text_field :name, class: 'input', placeholder: 'Name' %>
+        <%= passengers_form.text_field :name, class: 'input', placeholder: 'Name', required: true %>
       </div>
 
       <div class="column is-4 pt-1">
         <%= passengers_form.label :email, 'Email', class: 'label' %>
-        <%= passengers_form.email_field :email, class: 'input', placeholder: "Email" %>
+        <%= passengers_form.email_field :email, class: 'input', placeholder: "Email", required: true %>
       </div>
     </div>
   <% end %>
