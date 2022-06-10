@@ -7,7 +7,7 @@
   <div class="columns is-centered">
     <div class="column is-4">
       <%= form.label :name, 'Name', class: 'label' %>
-      <%= form.text_field :name, class: 'input', placeholder: 'Name', required: true %>
+      <%= form.text_field :name, class: 'input', placeholder: 'Name', required: true, pattern: '.*\S+.*', title: "Name can't be blank." %>
     </div>
 
     <div class="column is-4">
@@ -32,7 +32,7 @@
     <div class="columns is-centered">
       <div class="column is-4 pt-1">
         <%= passengers_form.label :name, 'Name', class: 'label' %>
-        <%= passengers_form.text_field :name, class: 'input', placeholder: 'Name', required: true %>
+        <%= passengers_form.text_field :name, class: 'input', placeholder: 'Name', required: true, pattern: '.*\S+.*', title: "Name can't be blank." %>
       </div>
 
       <div class="column is-4 pt-1">
