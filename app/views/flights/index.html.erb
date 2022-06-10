@@ -1,4 +1,4 @@
-<section>
+<section class="section py-1">
   <h1 class="is-size-2 has-text-centered py-4">Find Flights</h1>
 
   <div class="container">
@@ -7,7 +7,7 @@
 </section>
 
 <% if @search_results %>
-  <section>
+  <section class="section pt-0">
     <div class="container">
       <%= render partial: 'search_results', locals: { flights: @search_results } %>
     </div>
