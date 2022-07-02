@@ -29,6 +29,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
+      BookingMailer.with(booking: @booking).booking_email.deliver_later
+
       flash[:notice] = helpers.booking_success_message
       redirect_to booking_path(@booking)
     else

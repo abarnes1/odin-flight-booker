@@ -1,0 +1,10 @@
+Booking Confirmation
+====================
+You have successfully booked a flight with Goose Air!
+
+Flight details:
+  Departing <%= @booking.flight.departure_airport.name %> at <%= @booking.local_departure_time %>
+  Arriving <%= @booking.flight.arrival_airport.name %> at <%= @booking.local_arrival_time %>
+
+
+Thanks for flying with us <%= @booking.name %>.

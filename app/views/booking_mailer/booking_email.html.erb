@@ -1,0 +1,8 @@
+<h1>Booking Confirmation</h1>
+<p>You have successfully booked a flight with Goose Air!</p>
+<p>Flight details:
+  <p>Departing <%= @booking.flight.departure_airport.name %> at <%= @booking.flight.local_departure_time %></p>
+  <p>Arriving <%= @booking.flight.arrival_airport.name %> at <%= @booking.flight.local_arrival_time %> </p>
+</p>
+
+<p>Thanks for flying with us <%= @booking.name %>.</p>
