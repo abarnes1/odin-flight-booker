@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "noreply@dev-flightbooker.com"
+  default from: Figaro.env.email_username
   layout "mailer"
 end

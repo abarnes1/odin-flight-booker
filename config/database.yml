@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  host: localhost
   database: flight_booker_production
   username: flight_booker
   password: <%= ENV["FLIGHT_BOOKER_DATABASE_PASSWORD"] %>

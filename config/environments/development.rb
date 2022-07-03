@@ -59,9 +59,26 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  # Open emails with letter opener gem
-  config.action_mailer.delivery_method = :letter_opener
+  # Mail delivery
   config.action_mailer.perform_deliveries = true
+
+  # Deliver emails in browswer with letter opener gem
+  config.action_mailer.delivery_method = :letter_opener
+
+  # Deliver actual emails
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings =
+  #   {
+  #     address: Figaro.env.email_smtp,
+  #     port: 587,
+  #     domain: Figaro.env.email_domain,
+  #     user_name: Figaro.env.email_username,
+  #     password: Figaro.env.email_app_pass,
+  #     authentication: 'plain',
+  #     enable_starttls_auto: true,
+  #     open_timeout: 5,
+  #     read_timeout: 5
+  #   }
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
